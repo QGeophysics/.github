@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>The qgeophysics Manifesto</h1>
+  <h1>The QGeophysics Manifesto</h1>
   <p><strong>Subsurface Insight • Open Standards • Enterprise QGIS Ecosystem</strong></p>
 </div>
 
