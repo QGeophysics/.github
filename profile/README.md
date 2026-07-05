@@ -1,62 +1,69 @@
 <div align="center">
   <h1>The QGeophysics Manifesto</h1>
-  <p><strong>Subsurface Information • Open Standards • Enterprise QGIS Ecosystem</strong></p>
+  <p><strong>Subsurface Information • Open Standards • QGIS Ecosystem</strong></p>
 </div>
 
 ---
 
-## 1. The Problem to Address
+## 1. The Problem
 
-The subsurface interpretation landscape is structurally broken, creating severe friction across industry enterprises, independent practitioners, and academic institutions.
-
-*   **Discipline Silos:** Geophysical domains are trapped in segregated software ecosystems. Seismologists, potential-field geophysicists, and petrophysicists operate in isolated environments, making truly integrated, multi-physics subsurface correlation inefficient and difficult.
-*   **The GIS-Subsurface Divide:** Traditional GIS platforms excel at surface geography ($X, Y$) and spatial data infrastructures but have historically treated depth ($Z$) and time ($T$) as secondary attributes. Conversely, specialized geophysical software treats spatial geodetic reference systems as an afterthought.
-*   **Inaccessible Open-Source Power:** Immense computational power exists within open-source Python frameworks (`SimPEG`, `ObsPy`, `Fatiando a Terra`, `welly`, etc.). However, these libraries lack cohesive, professional Graphical User Interfaces (GUIs), restricting their use to code-heavy environments and preventing rapid visual QC or real-time exploration.
-*   **Commercial Lock-In:** Proprietary enterprise interpretation suites are closed-source and inflexible. They often price out research initiatives and mid-sized enterprise teams while creating restrictive barriers around data formats and custom algorithmic extension.
+- **Discipline silos.** Seismic, potential-field, well-log, and electromagnetic geophysics each live in separate software ecosystems. Cross-discipline correlation is manual and error-prone.
+- **The GIS–subsurface divide.** GIS platforms handle surface geography well but treat depth as a secondary attribute. Geophysical software handles depth well but treats spatial reference systems as an afterthought.
+- **Locked-away computation.** Strong open-source computational libraries exist across geophysics, but most lack an interactive front end, limiting their use to script-based workflows.
+- **Closed commercial platforms.** Proprietary interpretation suites restrict data formats, algorithmic extension, and long-term data access.
 
 ---
 
-## 2. The Vision & Architectural Paradigm
+## 2. Core Objective
 
-### The Core Objective
-Build an open, modular, and extensible geophysical ecosystem inside QGIS that delivers an industry-grade user experience across all subsurface disciplines. `qgeophysics` is envisioned to act as the unified GUI orchestration layer, bridging enterprise geographic mapping with multi-dimensional subsurface interpretation.
-
-### Hub-and-Spoke Architecture
-To guarantee stability and scalability without succumbing to software bloat, `qgeophysics` strictly rejects a monolithic design in favor of a modular, decoupled framework:
-
-*   **`qgeophysics-core`:** The foundational installation. It establishes a unified subsurface data registry, manages spatial-to-depth synchronization, coordinates complex CRS transformations, and provides global visualization standards (color maps, layout viewports, cross-section canvases).
-*   **Domain Modules:** Independent, pluggable extensions (`qgeophysics-seismic`, `qgeophysics-wells`, `qgeophysics-potentialfields`, etc.) that interface cleanly with the core framework. Users need to install only the specific disciplinary capabilities their workflows demand.
+QGeophysics is an open, modular geophysical ecosystem built inside QGIS. It provides a single interpretation environment across subsurface disciplines, connecting surface geographic mapping with multi-dimensional subsurface data.
 
 ---
 
-## 3. Extensibility & Research Integration
+## 3. Architecture
 
-While `qgeophysics` leverages established standard libraries for foundational tasks, the architecture is fundamentally open to innovation. The modular design ensures that new computational methods, experimental algorithms, and active academic research can be integrated directly into the workspace.
+**Hub-and-spoke design.** A single core module handles shared infrastructure; independent domain modules plug into it. No monolithic build.
 
-When a novel numerical approach solves a practical subsurface problem, the framework provides a clear, structured GUI pathway to implement and validate it alongside standard industry workflows. Innovation is not a closed door; applied research and practical experimentation are core contributors to the ecosystem's evolution.
+| Component | Role |
+|---|---|
+| `QGeophysics-core` | Shared data registry, coordinate reference handling, spatial synchronization with QGIS, base infrastructure for module integration |
+| Domain modules | Independent, optional extensions for each discipline |
+
+Users install only the modules their work requires.
 
 ---
 
-## 4. Unbounded Domain Scope
+## 4. Domain Modules
 
-`qgeophysics` defines an open, extensible domain architecture. While active development anchors around foundational geophysical pillars, the ecosystem is explicitly structured to scale into any subsurface or spatial-scientific domain.
+| Module | Scope |
+|---|---|
+| `QGeophysics-seismic` | Seismic navigation, horizon/fault picking, attribute computation, seismic-to-well tie |
+| `QGeophysics-wells` | Log ingestion, trajectory visualization, correlation tracks, petrophysical cross-plotting |
+| `QGeophysics-potentialfields` | Gravity/magnetic grid handling, regional-residual separation, forward modeling |
+| `QGeophysics-em` | Sounding curves, pseudosections, magnetotelluric workflows |
+| `QGeophysics-seismology` | Hypocenter mapping, focal mechanisms, waveform inspection |
 
-### Foundational Pillars (Active Core Trajectory)
-*   **Seismic Interpretation (`qgeophysics-seismic`):** 2D/3D navigation, horizon and fault picking, attribute computation, and interactive seismic-to-well tie calibration.
-*   **Well & Borehole Analytics (`qgeophysics-wells`):** Multi-format log ingestion (LAS/DLIS), 3D trajectory visualization, customizable correlation tracks, and petrophysical cross-plotting.
-*   **Potential Fields (`qgeophysics-potentialfields`):** Gridded scalar field management (Gravity and Magnetics), regional/residual filtering, and profile forward modeling.
-*   **Electrical & Electromagnetics (`qgeophysics-em`):** Sounding curve visualization, pseudosections, and magnetotelluric (MT) workflow integration.
-*   **Seismology & Geomechanics (`qgeophysics-seismology`):** Earthquake hypocenter mapping, focal mechanism plotting, waveform inspection, and stress-field visualization.
-
-### Unlimited Ecosystem Expansion
-Because `qgeophysics-core` abstracts the underlying subsurface data structures and spatial-to-depth rendering engines, the ecosystem natively supports unbounded expansion. Community developers, enterprise R&D teams, and academic researchers are most welcome to build custom domain modules without altering or compromising the core infrastructure.
+The module list is not fixed. New domains — geothermal, hydrogeophysics, environmental geophysics, or fields not yet defined — can be added without modifying the core.
 
 ---
 
 ## 5. Architectural Principles
 
-To ensure long-term sustainability and future-proof the platform against technological shifts, `qgeophysics` enforces strict structural standards:
+- **Orchestration, not reinvention.** The core does not replace established open-source computational libraries. It wraps them with a consistent, interactive front end. Specific libraries in use are documented separately and may change over time; the framework's role as an orchestration layer does not.
+- **Separation of interaction and computation.** Interactive review, parameter setup, and QC happen inside the ecosystem. Heavy computation (large inversions, full-volume processing) is delegated to external compute resources — local, HPC, or cloud — as appropriate.
+- **Open data standards.** Reading and writing rely on established open scientific and geospatial formats. As formats evolve or new open standards emerge, support extends to them; no format is treated as permanent or exclusive.
+- **Interface neutrality.** The interpretation layer is defined by function, not by a specific technology. As interaction paradigms evolve, the ecosystem is expected to adapt its front end without changing its underlying architecture.
 
-*   **Orchestration Over Reinvention:** We do not waste engineering hours rewriting mature computational libraries or standard file parsers. `qgeophysics` serves as the premier UI, visualization, and orchestration bridge, wrapping trusted open-source backends (`segyio`, `welly`, `Harmonica`, `SimPEG`, `ObsPy`, `pyGIMLi`) to transform script-only engines into interactive graphical tools.
-*   **Scalable Compute Pipelines:** The desktop canvas is optimized for interactive interpretation, visual correlation, parameter setup, and QC. Heavy, large-scale computational processing is cleanly decoupled and designed to delegate execution to local high-performance computing (HPC) clusters or cloud pipelines.
-*   **Uncompromising Open Standards:** The platform strictly reads and writes universally recognized scientific and geospatial data standards (SEG-Y, LAS, NetCDF, GeoTIFF, OME-Zarr, I3S), ensuring zero vendor lock-in and complete data sovereignty for enterprise teams.
+---
+
+## 6. Why QGIS
+
+- **Mature spatial foundation.** Coordinate reference handling, rendering, and vector/raster interoperability are already solved problems in QGIS, refined over two decades by a broad user base.
+- **Independent governance.** QGIS is maintained by OSGeo, not a single commercial vendor. This removes a single point of commercial failure or re-licensing risk from the foundation layer.
+- **Shared ceiling, accepted.** QGeophysics inherits both the strengths and the limits of QGIS. Improvements in QGIS's own capabilities (3D rendering, mesh handling, plugin infrastructure) extend to QGeophysics without additional effort. This dependency is a deliberate design choice.
+
+---
+
+## 7. Scope and Extension
+
+QGeophysics defines a stable core and an open set of domain modules. Contribution — by individuals, research groups, or organizations — occurs at the module level, without requiring changes to core infrastructure. The ecosystem is expected to expand into domains not anticipated at the time of this document.
