@@ -66,4 +66,4 @@ The module list is not fixed. New domains — geothermal, hydrogeophysics, envir
 
 ## 7. Scope and Extension
 
-QGeophysics defines a stable core and an open set of domain modules. Contribution — by individuals, research groups, or organizations — occurs at the module level, without requiring changes to core infrastructure. The ecosystem is expected to expand into domains not anticipated at the time of this document.
+QGeophysics defines a stable core and an open set of domain modules. Contribution by individuals, research groups, or organizations occurs at the module level, without requiring changes to core infrastructure. The ecosystem is expected to expand into domains not anticipated at the time of this document.
