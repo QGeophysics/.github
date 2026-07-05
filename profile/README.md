@@ -50,7 +50,7 @@ The module list is not fixed. New domains — geothermal, hydrogeophysics, envir
 ## 5. Architectural Principles
 
 - **Orchestration, not reinvention.** The core does not replace established open-source computational libraries. It wraps them with a consistent, interactive front end. Specific libraries in use are documented separately and may change over time; the framework's role as an orchestration layer does not.
-- **Separation of interaction and computation.** Interactive review, parameter setup, and QC happen inside the ecosystem. Heavy computation (large inversions, full-volume processing) is delegated to external compute resources — local, HPC, or cloud — as appropriate.
+- **Separation of interaction and computation.** Interactive review, parameter setup, and QC happen inside the ecosystem. Heavy computation (large inversions, full-volume processing) is delegated to external compute resources like local, HPC, or cloud as appropriate.
 - **Open data standards.** Reading and writing rely on established open scientific and geospatial formats. As formats evolve or new open standards emerge, support extends to them; no format is treated as permanent or exclusive.
 - **Interface neutrality.** The interpretation layer is defined by function, not by a specific technology. As interaction paradigms evolve, the ecosystem is expected to adapt its front end without changing its underlying architecture.
 
