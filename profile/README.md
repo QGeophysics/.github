@@ -16,7 +16,7 @@
 
 ## 2. Core Objective
 
-QGeophysics is an open, modular geophysical ecosystem built inside QGIS. It provides a single interpretation environment across subsurface disciplines, connecting surface geographic mapping with multi-dimensional subsurface data.
+QGeophysics is an open, modular geophysical ecosystem built inside QGIS. It is envisioned to provide a single interpretation environment across subsurface disciplines, connecting surface geographic mapping with multi-dimensional subsurface data.
 
 ---
 
