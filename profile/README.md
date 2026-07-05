@@ -43,7 +43,7 @@ Users install only the modules their work requires.
 | `QGeophysics-em` | Sounding curves, pseudosections, magnetotelluric workflows |
 | `QGeophysics-seismology` | Hypocenter mapping, focal mechanisms, waveform inspection |
 
-The module list is not fixed. New domains — geothermal, hydrogeophysics, environmental geophysics, or fields not yet defined — can be added without modifying the core.
+The module list is not fixed. New domains like geothermal, hydrogeophysics, environmental geophysics, or fields not yet defined can be added without modifying the core.
 
 ---
 
